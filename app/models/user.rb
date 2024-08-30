@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :chat_memberships, inverse_of: :user, dependent: :destroy
   has_many :messages
   has_many :bookings
+  has_many :seats, through: :bookings
 end
