@@ -12,7 +12,8 @@
   <tbody>
   <% @seats.each do |seat| %>
     <tr>
-      <td><%= seat.name %></td>
+      <!-- Redirect to new booking page -->
+      <td><%= link_to seat.name, new_booking_path(seat_id: seat.id) %></td>
       <td>
         <% future_bookings = seat.bookings.where('from_date >= ?', Time.current.beginning_of_day) %>
         <% if future_bookings.any? %>
