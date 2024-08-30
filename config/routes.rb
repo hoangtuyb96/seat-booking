@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "seats#index"
-  get 'qrcode' => "qrcode#index"
+  get 'qrcode' => "qrcode#index", as: :qrcode
   get 'search/users'
   devise_for :users,
     only: [:sessions, :registrations],
