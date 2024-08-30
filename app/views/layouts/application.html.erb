@@ -14,10 +14,13 @@
 
   <body>
     <main>
-      <!-- Show flash message if existed -->
-      <% if flash[:notice] %>
-        <div class="alert alert-success"><%= flash[:notice] %></div>
-      <% end %>
+      <div class="notice" style="color: green;">
+        <%= notice %>
+      </div>
+
+      <div class="alert" style="color: red;">
+        <%= alert %>
+      </div>
       <%= yield %>
     </main>
   </body>
