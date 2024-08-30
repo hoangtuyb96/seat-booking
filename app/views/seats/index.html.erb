@@ -23,6 +23,7 @@
                 <strong>Booked by:</strong> <%= booking.user.full_name %>,
                 <strong>From:</strong> <%= booking.from_date.strftime("%Y-%m-%d %H:%M") %>,
                 <strong>To:</strong> <%= booking.to_date.strftime("%Y-%m-%d %H:%M") %>,
+                <strong>Check in:</strong> <%= booking.check_in ? "Yes" : "No" %>,
               </li>
             <% end %>
           </ul>
