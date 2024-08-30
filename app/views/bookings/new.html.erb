@@ -5,12 +5,12 @@
   <%= form.label :seat_id %>
   <%= form.text_field :seat_id %>
   <%= form.label :from_date %>
-  <%= form.text_field :from_date %>
+  <%= form.date_field :from_date %>
   <%= form.label :to_date %>
-  <%= form.text_field :to_date %>
+  <%= form.date_field :to_date %>
   <%= form.label :check_in %>
   <%= form.text_field :check_in %>
   <%= form.submit %>
 <% end %>
 
-<%= link_to 'Back', bookings_path %>
+<%= link_to 'Back', seats_path %>
