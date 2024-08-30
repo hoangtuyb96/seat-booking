@@ -76,3 +76,4 @@ gem "ransack", "~> 4.1"
 gem "letter_avatar", "~> 0.3.9"
 
 gem "pry"
+gem "rqrcode", "~> 2.2"
