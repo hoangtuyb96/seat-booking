@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_02_185910) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_30_045421) do
+  create_table "bookings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "seat_id", null: false
+    t.datetime "from_date"
+    t.datetime "to_date"
+    t.boolean "check_in"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seat_id"], name: "index_bookings_on_seat_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "chat_memberships", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chat_id", null: false
@@ -37,6 +49,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_02_185910) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+# Could not dump table "seats" because of following StandardError
+#   Unknown type 'biginit' for column 'id'
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "full_name", default: "", null: false
@@ -50,6 +65,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_02_185910) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "seats"
+  add_foreign_key "bookings", "users"
   add_foreign_key "chat_memberships", "chats"
   add_foreign_key "chat_memberships", "users"
 end
