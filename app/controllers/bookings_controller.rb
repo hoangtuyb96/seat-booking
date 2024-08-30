@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   def new
     @seat = Seat.find_by(id: params[:seat_id])
     @booking = current_user.bookings.new
+    @seat_name = Seat.find(params[:seat_id]).name if params[:seat_id]
   end
 
   def create

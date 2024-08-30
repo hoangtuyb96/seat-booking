@@ -3,7 +3,11 @@
 # Create form to create a new booking
 <%= form_with(model: @booking) do |form| %>
   <%= form.label :seat_id %>
-  <%= form.text_field :seat_id, value: @seat.id %>
+  <% if @seat_name %>
+    <%= form.text_field :seat_id, value: @seat_name, readonly: true %>
+  <% else %>
+    <%= form.text_field :seat_id %>
+  <% end %>
   <%= form.label :from_date %>
   <%= form.date_select :from_date %>
   <%= form.time_select :from_date, :ignore_date => true %>
