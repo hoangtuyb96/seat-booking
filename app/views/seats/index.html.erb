@@ -1,5 +1,7 @@
 <!-- app/views/seats/index.html.erb -->
-
+<% if @have_booking %>
+  <h1>You have a booking. You can only book one seat at a time.</h1> 
+<% end %>
 <h1>Seat List</h1>
 
 <table>
