@@ -13,9 +13,9 @@ class BookingsController < ApplicationController
     else
       @booking = current_user.bookings.new(booking_params)
       if @booking.save
-        redirect_to @booking, notice: 'Booking was successfully created.'
+        redirect_to seats_path, notice: 'Booking was successfully created.'
       else
-        redirect_to seats_path
+        redirect_to new_booking_path(seat_id: @booking.seat_id)
       end
     end
   end
