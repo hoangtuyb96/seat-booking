@@ -3,7 +3,7 @@
 # Create form to create a new booking
 <%= form_with(model: @booking) do |form| %>
   <%= form.label :seat_id %>
-  <%= form.text_field :seat_id %>
+  <%= form.text_field :seat_id, value: @seat.id %>
   <%= form.label :from_date %>
   <%= form.date_field :from_date %>
   <%= form.label :to_date %>
