@@ -79,4 +79,6 @@ Rails.application.configure do
 
   # Configure the domain for your application.
   config.domain = "localhost:3000"
+  # add gmt+7
+  config.time_zone = "Asia/Bangkok"
 end
