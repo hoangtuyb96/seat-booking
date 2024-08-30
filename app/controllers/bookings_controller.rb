@@ -1,15 +1,22 @@
 class BookingsController < ApplicationController
   def new
+    @seat = Seat.find_by(id: params[:seat_id])
     @booking = current_user.bookings.new
     @seat_name = Seat.find(params[:seat_id]).name if params[:seat_id]
   end
 
   def create
-    @booking = current_user.bookings.new(booking_params)
-    if @booking.save
-      redirect_to @booking, notice: 'Booking was successfully created.'
+    # One user can only book one seat at a time
+    # If the user has a booking, redirect to the booking page
+    if current_user.bookings.any?
+      redirect_to seats_path
     else
-      render :new
+      @booking = current_user.bookings.new(booking_params)
+      if @booking.save
+        redirect_to @booking, notice: 'Booking was successfully created.'
+      else
+        render seats_path
+      end
     end
   end
 
