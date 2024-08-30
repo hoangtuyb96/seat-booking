@@ -1,0 +1,17 @@
+<li id="<%= dom_id user %>">
+  <div class="flex items-center gap-4 group block rounded-lg p-1 text-center hover:bg-gray-100 dark:hover:bg-gray-600">
+    <%= form_tag chats_path, method: :post, class: "flex  w-full" do %>
+      <%= hidden_field_tag :user_id, user.id %>
+        <%= letter_avatar_tag(user.full_name, 100, class: 'h-8 w-8 rounded-full') %>
+        <span class="bg-green-400"></span>
+
+        <%= button_tag type: :submit do %>
+          <div class="flex items-center gap-4 px-2">
+            <div class="font-medium dark:text-white">
+              <div><%= user.full_name %></div>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+</li>

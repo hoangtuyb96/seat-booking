@@ -1,17 +1,13 @@
 <div id="<%= dom_id message %>">
-  <% if message.user.id != current_user.id %>
-    <div class="flex place-content-start items-start gap-2.5">
-      <div class="leading-1.5 flex w-full max-w-[600px] flex-col rounded-lg px-3 border-gray-200 bg-gray-100 p-1 dark:bg-gray-700">
-        <p class="py-2.5 text-sm font-normal text-gray-900 dark:text-white"><%= message.content %></p>
-        <p><%= message.user.full_name %></p>
+  <div class="flex place-content-start items-start gap-2.5 py-1">
+    <%# <img class="w-8 h-8 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Jese image"> %>
+    <img class="h-8 w-8 rounded-full" src="<%= letter_avatar_url(message.user.full_name, 100) %>" alt="<%= message.user.full_name %>">
+    <div class="leading-1.5 flex w-full max-w-[600px] flex-col rounded-lg px-3 border-gray-200 bg-gray-100 p-1 dark:bg-gray-700">
+      <div class="flex items-center space-x-2 rtl:space-x-reverse">
+        <span class="text-sm font-semibold text-gray-900 dark:text-white"><%= message.user.full_name %></span>
+        <span class="text-sm font-normal text-gray-500 dark:text-gray-400"><%= message.created_at %></span>
       </div>
+      <p class="py-2.5 text-sm font-normal text-gray-900 dark:text-white"><%= message.content %></p> 
     </div>
-  <% else %>
-    <div class="flex place-content-end items-start gap-2.5">
-      <div class="leading-1.5 flex w-full max-w-[600px] flex-col rounded-lg px-3 border-gray-200 bg-gray-100 p-1 dark:bg-gray-700">
-        <p class="py-2.5 text-sm font-normal text-gray-900 dark:text-white"><%= message.content %></p>
-        <p><%= message.user.full_name %></p>
-      </div>
-    </div>
-  <% end %>
+  </div>
 </div>

@@ -70,3 +70,7 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "ransack", "~> 4.1"
+
+gem "letter_avatar", "~> 0.3.9"

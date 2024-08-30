@@ -6,7 +6,7 @@ class Chat < ApplicationRecord
 
   class << self
     def chat_name_for(*users)
-      users.map(&:id).sort.map {|u| "u#{u.id}" }.join("_")
+      users.map(&:id).sort.map {|id| "u#{id}" }.join("_")
     end
 
     def find_or_create_for(*users)

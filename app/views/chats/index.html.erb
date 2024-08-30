@@ -1,47 +1,37 @@
-<aside id="separator-sidebar" class="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0" aria-label="Sidebar">
-  <div class="h-full overflow-y-auto bg-gray-50 px-3 py-4 dark:bg-gray-800">
-    <ul class="space-y-2 border-gray-200 font-medium dark:border-gray-700">
-      <li>
-        <p class="text-2xl flex rounded-lg p-2 text-gray-900 transition duration-75 dark:text-white">Chats</p>
-      </li>
-      <li>
-        <form>
-          <label for="default-search" class="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white">Search</label>
-          <div class="relative">
-            <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-              <svg class="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-              </svg>
-            </div>
-            <input type="search" id="default-search" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500" placeholder="Search Messenger" required />
-          </div>
-        </form>
-      </li>
-      <div id="chats">
-        <%= render @chats %>
-      </div>
-    </ul>
-  </div>
-</aside>
+<div class="flex h-screen w-screen">
+  <aside id="separator-sidebar" class="fixed left-0  z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0" aria-label="Sidebar">
+    <div class="h-full overflow-y-auto bg-gray-50 px-3 py-4 dark:bg-gray-800">
+      <ul class="space-y-2 border-gray-200 font-medium dark:border-gray-700">
+        <li>
+          <p class="text-2xl flex rounded-lg p-2 text-gray-900 transition duration-75 dark:text-white">
+            <%= image_tag "logo-1.png", class: "mr-2 h-8 rounded-full", alt: "Rails Messenger Logo" %>
+            Chats
+          </p>
+        </li>
+        <div id="friends" >
+          <%= render partial: "users/friend", collection: @friends, as: :user %>
+        </div>
+      </ul>
+    </div>
+  </aside>
 
-<div class="flex h-screen flex-col justify-between sm:ml-64">
-  <%# <%= component Header, user: current_user %>
-  <%= render partial: "chats/chat_header" %>
-
-  <div class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
-    <div class="scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch flex flex-col space-y-4 overflow-y-auto p-3">
-      <div id="messages">
-        <% if current_chat %>
-          <%= turbo_stream_from current_chat %>
-          <%= render current_chat.messages %>
-        <% else %>  
-          <div class="flex place-content-start items-start gap-2.5">
-            <p class="py-2.5 text-sm font-normal text-gray-900">No Chat</p>
+  <div class="flex h-screen w-screen flex-col justify-between sm:ml-64">
+    <%= render partial: "chats/chat_header" %>
+    <div class="flex flex-col space-y-4 p-3 overflow-y-scroll scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+      <div class="scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch flex flex-col space-y-4 overflow-y-auto p-3">
+        <div id="messages" class="flex-col flex mr-4 flex-grow">
+          <% if current_chat %>
+            <%= turbo_stream_from current_chat %>
+            <%= render current_chat.messages %>
+          <% else %>  
+            <div class="flex place-content-start items-start gap-2.5">
+              <p class="py-2.5 text-sm font-normal text-gray-900">No Chat</p>
             </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <%= render "messages/form" if current_chat  %>
+    <%= render "messages/form" if current_chat  %>
+  </div>
 </div>

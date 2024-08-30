@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+  get 'search/users'
   devise_for :users,
-    only: :sessions,
-    controllers: { sessions: 'users/sessions' },
-    path_names: { sign_in: 'login', sign_out: 'logout' }
-  devise_scope :user do
-    get 'login', to: 'users/sessions#new'
-  end
+    only: [:sessions, :registrations],
+    controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+    }
   
   root "chats#index"
   resources :chats do

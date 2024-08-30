@@ -6,7 +6,7 @@ class Message < ApplicationRecord
     broadcast_append_to(
       chat,
       partial: "messages/message",
-      locals: { message: self, current_user: user },
+      locals: { message: self, current_user: nil },
       target: "messages"
     )
   end
