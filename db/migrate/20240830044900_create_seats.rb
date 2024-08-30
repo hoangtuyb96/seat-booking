@@ -1,6 +1,6 @@
 class CreateSeats < ActiveRecord::Migration[7.1]
   def change
-    create_table :seats, id: :biginit do |t|
+    create_table :seats do |t|
       t.string :name
 
       t.timestamps
