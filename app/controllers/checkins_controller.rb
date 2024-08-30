@@ -1,5 +1,4 @@
 class CheckinsController < ApplicationController
-  # before_action
 
   def new
   end

@@ -1,4 +1,6 @@
+<% seat_id = request.query_parameters['seat_id'] %>
+
 <div class="inline-block ml-2">
-  <%= button_to "Checkin", checkins_path(), method: :post, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  <%= button_to "Checkin", checkins_path(seat_id: seat_id), method: :post, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
 </div>
 
