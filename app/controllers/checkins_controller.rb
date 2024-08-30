@@ -20,6 +20,6 @@ class CheckinsController < ApplicationController
       booked.destroy
     end
 
-    redirect_to root_path, notice: 'Check-in link expired'
+    redirect_to root_path, notice: 'Check-in link expired. Therefore we canceled your booking.'
   end
 end

@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     # One user can only book one seat at a time
     # If the user has a booking, redirect to the booking page
     if current_user.bookings.any?
-      redirect_to seats_path
+      redirect_to seats_path, notice: 'You already have a booking. You can only book one seat at a time.'
     else
       @booking = current_user.bookings.new(booking_params)
       if @booking.save
