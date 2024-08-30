@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'seats/index'
   root "seats#index"
   get 'search/users'
   devise_for :users,
