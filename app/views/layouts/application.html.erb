@@ -14,6 +14,10 @@
 
   <body>
     <main>
+      <% if current_user %>
+        <%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete } %>
+      <% end %>
+
       <div class="notice" style="color: green;">
         <%= notice %>
       </div>
