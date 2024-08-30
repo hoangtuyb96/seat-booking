@@ -1,1 +1,35 @@
-hello
+<!-- app/views/seats/index.html.erb -->
+
+<h1>Seat List</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Seat Name</th>
+    <th>Booking Information</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @seats.each do |seat| %>
+    <tr>
+      <td><%= seat.name %></td>
+      <td>
+        <% future_bookings = seat.bookings.where('from_date >= ?', Time.current.beginning_of_day) %>
+        <% if future_bookings.any? %>
+          <ul>
+            <% future_bookings.each do |booking| %>
+              <li>
+                <strong>Booked by:</strong> <%= booking.user.full_name %>,
+                <strong>From:</strong> <%= booking.from_date.strftime("%Y-%m-%d %H:%M") %>,
+                <strong>To:</strong> <%= booking.to_date.strftime("%Y-%m-%d %H:%M") %>,
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          No bookings yet.
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
