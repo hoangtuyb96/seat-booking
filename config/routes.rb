@@ -7,9 +7,10 @@ Rails.application.routes.draw do
       sessions: 'users/sessions',
       registrations: 'users/registrations',
     }
-  
+
   resources :seats
   resources :bookings
+  resources :checkins
   # root "chats#index"
   # resources :chats do
   #   resources :messages, only: [:create]
